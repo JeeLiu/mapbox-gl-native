@@ -144,13 +144,17 @@ public class MapView extends SurfaceView {
 
         // Create the NativeMapView
         mNativeMapView = new NativeMapView(this, cachePath, dataPath, apkPath);
+
+        // Set default map location
+        mNativeMapView.setLatLngZoom(new LatLngZoom(new LatLng(0, 0), mNativeMapView.getMinZoom()));
+        //mNativeMapView.scaleBy(4.0);
+
         double centerLatitude = -35.3075;
         double centerLongitude = 149.1244;
         LatLng centerCoordinate = new LatLng(centerLatitude, centerLongitude);
         //setCenterCoordinate(centerCoordinate);
         //setZoomLevel(10);
-
-        mNativeMapView.setLatLngZoom(new LatLngZoom(new LatLng(0, 0), mNativeMapView.getMinZoom()));
+        //mNativeMapView.setLatLngZoom(new LatLngZoom(centerCoordinate, 10));
 
         // Load the attributes
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.MapView, 0, 0);
@@ -226,8 +230,7 @@ public class MapView extends SurfaceView {
         long duration = animated ? ANIMATION_DURATION : 0;
         //mNativeMapView.setLatLng(centerCoordinate, duration);
 
-        LatLngZoom llz = new LatLngZoom(centerCoordinate, mNativeMapView.getZoom());
-        mNativeMapView.setLatLngZoom(llz, duration);
+        mNativeMapView.setLatLngZoom(new LatLngZoom(centerCoordinate, mNativeMapView.getZoom()), duration);
     }
 
     public void setCenterCoordinate(LatLngZoom centerCoordinate) {
@@ -282,8 +285,7 @@ public class MapView extends SurfaceView {
         long duration = animated ? ANIMATION_DURATION : 0;
         //mNativeMapView.setZoom(zoomLevel, duration);
 
-        LatLngZoom llz = new LatLngZoom(mNativeMapView.getLatLng(), zoomLevel);
-        mNativeMapView.setLatLngZoom(llz, duration);
+        mNativeMapView.setLatLngZoom(new LatLngZoom(mNativeMapView.getLatLng(), zoomLevel), duration);
     }
 
     public boolean isZoomEnabled() {
@@ -695,9 +697,9 @@ public class MapView extends SurfaceView {
             double duration = speed / (deceleration * ease);
 
             // Cancel any animation
-            mNativeMapView.cancelTransitions();
+            //mNativeMapView.cancelTransitions();
 
-            mNativeMapView.moveBy(velocityX * duration / 2.0 / mScreenDensity, velocityY * duration / 2.0 / mScreenDensity, (long) (duration * 1000.0f));
+            //mNativeMapView.moveBy(velocityX * duration / 2.0 / mScreenDensity, velocityY * duration / 2.0 / mScreenDensity, (long) (duration * 1000.0f));
 
             return true;
         }

@@ -417,8 +417,8 @@ void Source::update(MapData& data,
 
     // Add existing child/parent tiles if the actual tile is not yet loaded
     for (const auto& id : required) {
-      std::string name = id;
-      mbgl::Log::Debug(mbgl::Event::Android, "request tile %s", name.c_str());
+        //std::string name = id;
+        //mbgl::Log::Debug(mbgl::Event::Android, "request tile %s", name.c_str());
 
         TileData::State state = hasTile(id);
 
