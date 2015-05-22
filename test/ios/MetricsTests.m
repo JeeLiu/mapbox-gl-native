@@ -10,7 +10,6 @@
 
 @interface MGLMapboxEvents (Testing)
 
-+ (instancetype)sharedManager;
 - (NSString *)appBundleId;
 - (NSString *)token;
 - (BOOL)isPaused;
@@ -59,12 +58,6 @@
 
 - (void)testAppBundleID {
     XCTAssertEqualObjects([[MGLMapboxEvents sharedManager] appBundleId], @"com.mapbox.Mapbox-GL-Tests");
-}
-
-- (void)testTokenSetViaMapView {
-    [tester.mapView setAccessToken:@"test_token"];
-
-    XCTAssertEqualObjects([[MGLMapboxEvents sharedManager] token], @"test_token");
 }
 
 - (void)testResumeMetricsCollection {
