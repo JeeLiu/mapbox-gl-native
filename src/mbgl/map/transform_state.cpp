@@ -133,11 +133,13 @@ const LatLng TransformState::getLatLng() const {
 #pragma mark - Zoom
 
 float TransformState::getNormalizedZoom() const {
-    return std::log(scale * util::tileSize / 512.0f) / M_LN2;
+    //return std::log(scale * util::tileSize / 512.0f) / M_LN2;
+    return std::log2(scale * util::tileSize / 512.0f);
 }
 
 double TransformState::getZoom() const {
-    return std::log(scale) / M_LN2;
+    //return std::log(scale) / M_LN2;
+    return std::log2(scale);
 }
 
 int32_t TransformState::getIntegerZoom() const {

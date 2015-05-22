@@ -35,6 +35,7 @@ void Transform::printState() {
     mbgl::Log::Debug(mbgl::Event::Android, "fb height %hu", current.getFramebufferHeight());
     mbgl::Log::Debug(mbgl::Event::Android, "pixel ratio %f", current.getPixelRatio());
     mbgl::Log::Debug(mbgl::Event::Android, "zoom %f", current.getZoom());
+    mbgl::Log::Debug(mbgl::Event::Android, "scale %f", current.getScale());
     mbgl::Log::Debug(mbgl::Event::Android, "lat %f", current.getLatLng().latitude);
     mbgl::Log::Debug(mbgl::Event::Android, "lng %f", current.getLatLng().longitude);
     mbgl::Log::Debug(mbgl::Event::Android, "angle %f", current.getAngle());
